@@ -33,6 +33,16 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+        EditText editTextPoints = (EditText) findViewById(R.id.editText3);
+        editTextPoints.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId == EditorInfo.IME_ACTION_SEND){
+                    sendMessage();
+                }
+                return true;
+            }
+        });
 
         findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,11 +56,15 @@ public class MainActivity extends AppCompatActivity {
         EditText textInput = (EditText) findViewById(R.id.messageText);
         String message = textInput.getText().toString();
         if(!message.equals("")){
-            Random rand = new Random();
-            String author = "TestUser" + rand.nextInt(1000);
-            ChatMessage cMessage = new ChatMessage(author, message);
+            //Random rand = new Random();
+            //String teamNumber = "TestUser" + rand.nextInt(1000);
+            EditText EditTextpoints = (EditText) findViewById(R.id.editText3);
+            String strpoints = EditTextpoints.getText().toString();
+
+            ChatMessage cMessage = new ChatMessage(message, strpoints);
             firebaseRef.push().setValue(cMessage);
             textInput.setText("");
+            EditTextpoints.setText("");
         }
     }
 }

@@ -6,23 +6,22 @@ package org.strykeforce.myapplication;
 
 public class ChatMessage {
 
-    private String author;
-    private String message;
+    private String teamNumber;
+    private String points;
 
     public ChatMessage(){
 
     }
 
-    public ChatMessage(String author, String message){
-        this.message = message;
-        this.author = author;
+    public ChatMessage(String teamnumber, String points){
+        this.points = points;
+        this.teamNumber = teamnumber;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getTeamNumber() { return teamNumber;
     }
 
-    public String getMessage() {
-        return message;
+    public String getPoints() {
+        return points;
     }
 }
